@@ -1,17 +1,9 @@
 #ifndef FOO_HPP
 #define FOO_HPP
 
+#include "Human.hpp"
 #include <list>
-#include <string> // Zak³adamy, ¿e Human u¿ywa std::string do przechowywania danych
 #include <vector>
-
-class Human
-{
-public:
-    void birthday(); // Zwiêksza pole age o 1
-    bool isMonster(
-        const std::string& animal) const; // Zwraca true, jeœli osoba nie lubi danego zwierzêcia
-};
 
 std::vector< char > foo(std::list< Human >& humans)
 {
@@ -22,12 +14,7 @@ std::vector< char > foo(std::list< Human >& humans)
     }
 
     for (auto it = humans.rbegin(); it != humans.rend(); ++it) {
-        if (it->isMonster("pies") && it->isMonster("kot")) {
-            result.push_back('n');
-        }
-        else {
-            result.push_back('y');
-        }
+        result.push_back(it->isMonster() ? 'n' : 'y');
     }
 
     return result;
